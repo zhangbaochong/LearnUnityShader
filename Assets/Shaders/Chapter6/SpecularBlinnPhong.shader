@@ -1,4 +1,6 @@
-﻿Shader "Unity Shaders Book/Chapter 6/SpecularBlinnPhong"
+﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
+Shader "Unity Shaders Book/Chapter 6/SpecularBlinnPhong"
 {
     Properties
     {
@@ -37,6 +39,7 @@
                 v2f o;
                 o.pos = UnityObjectToClipPos(v.vertex);
                 o.worldNormal = UnityObjectToWorldNormal(v.normal);
+                o.worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
                 return o;
             }
 
